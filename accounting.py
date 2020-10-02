@@ -1,4 +1,31 @@
-melon_cost = 1.00
+the_file=open("customer-orders.txt")
+melon_cost=1.00
+
+customer_overpaid=False
+
+def find_underpaid_customers():
+    for line in the_file:
+        line = line.rstrip()
+        words = line.split('|')
+
+        customer_id=words[0]
+        customer_name=words[1]
+        customer_melons=words[2]
+        customer_paid=words[3]
+        customer_expected = float(customer_melons) * melon_cost
+        formatted_expected='{:.2f}'.format(customer_expected)
+
+        if formatted_expected != customer_paid:
+           print(customer_name, ' paid ', customer_paid, ' expected ', formatted_expected)
+          
+
+find_underpaid_customers()
+
+
+
+
+
+"""melon_cost = 1.00
 
 customer1_name = "Joe"
 customer1_melons = 5
@@ -59,3 +86,4 @@ if customer6_expected != customer6_paid:
     print(f"{customer6_name} paid ${customer6_paid:.2f},",
           f"expected ${customer6_expected:.2f}"
           )
+"""
